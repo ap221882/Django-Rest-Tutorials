@@ -7,18 +7,11 @@ from .models import Employee
 
 from testapp.mixins import SerializeMixin
 
-import json
-
 
 class EmployeeDetailsCBV(SerializeMixin, View):
     def get(self, request, id, *args, **kwargs):
-        try:
-            emp = Employee.objects.get(id=id)
-        except Employee.DoesNotExist:
-            json_data = json.dumps(
-                {'msg': 'The requested resource is not available.'})
-        else:
-            json_data = self.serialize([emp, ])
+        emp = Employee.objects.get(id=id)
+        json_data = self.serialize([emp, ])
         return HttpResponse(json_data, content_type='application/json')
 
 
