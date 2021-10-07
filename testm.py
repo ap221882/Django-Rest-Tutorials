@@ -15,6 +15,7 @@ def get_all():
     print(resp.json())
 
 
+get_resource('302')
 get_all()
 # id = input('Enter some ID: ')
 # get_resource(id)
