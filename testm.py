@@ -6,11 +6,13 @@ END_POINT = 'api/'
 def get_resource(id):
     resp = requests.get(BASE_URL+END_POINT+id+'/')
     # if resp.status_code in range(200, 300):
-    if resp.status_code == requests.codes.ok:
-        print(resp.status_code)
-        print(resp.json())
-    else:
-        print('Something goes wrong.')
+    print(resp.status_code)
+    print(resp.json())
+    # if resp.status_code == requests.codes.ok:
+    #     print(resp.status_code)
+    #     print(resp.json())
+    # else:
+    #     print('Something goes wrong.')
 
 
 def get_all():
@@ -19,8 +21,8 @@ def get_all():
     print(resp.json())
 
 
-get_resource('302')
-# get_all()
+get_resource('3')
+get_all()
 # id = input('Enter some ID: ')
 # get_resource(id)
 
