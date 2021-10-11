@@ -34,7 +34,28 @@ def create_resource():
     print(resp.json())
 
 
-create_resource()
+def update_resource(id):
+    new_emp = {
+        'ename': 'Karina',
+        'esal': 30
+
+    }
+    resp = requests.put(BASE_URL+END_POINT+str(id) +
+                        '/', data=json.dumps(new_emp))
+    print(resp.status_code)
+    print(resp.json())
+
+
+def delete_resource(id):
+    resp = requests.delete(BASE_URL+END_POINT+str(id) + '/')
+    print(resp.status_code)
+    print(resp.json())
+
+
+# update_resource(8)
+delete_resource(6)
+
+# create_resource()
 
 
 # get_resource('3')
