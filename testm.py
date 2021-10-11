@@ -24,10 +24,10 @@ def get_all():
 
 def create_resource():
     new_emp = {
-        'eno': 600,
-        'ename': 'Shiva',
-        'esal': 7500,
-        'eaddr': 'Chhatarpur',
+        'eno': 420,
+        'ename': 'Katrina',
+        'esal': 40000,
+        'eaddr': 'Mumbai',
     }
     resp = requests.post(BASE_URL+END_POINT, data=json.dumps(new_emp))
     print(resp.status_code)
@@ -37,8 +37,8 @@ def create_resource():
 create_resource()
 
 
-get_resource('3')
-get_all()
+# get_resource('3')
+# get_all()
 # id = input('Enter some ID: ')
 # get_resource(id)
 

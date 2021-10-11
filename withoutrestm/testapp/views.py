@@ -1,6 +1,6 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from withoutrestm.testapp.utils import is_json
+from testapp.utils import is_json
 import json
 from django.shortcuts import render
 from django.views.generic import View
@@ -11,6 +11,7 @@ from .models import Employee
 
 from testapp.mixins import SerializeMixin
 from testapp.mixins import HttpResponseMixin
+from .forms import EmployeeForm
 
 
 class EmployeeDetailsCBV(SerializeMixin, HttpResponseMixin, View):
@@ -34,5 +35,19 @@ class EmployeeListCBV(HttpResponseMixin, SerializeMixin, View):
         return self.render_to_http_response(json_data)
 
     def post(self, request, *args, **kwargs):
-        json_data = json.dumps({'msg': 'This is from post method'})
-        return self.render_to_http_response(json_data)
+        data = request.body
+        valid_json = is_json(data)
+        if not valid_json:
+            json_data = json.dumps({'msg': 'please send valid json data only'})
+            return self.render_to_http_response(json_data, status=400)
+        # json_data = json.dumps({'msg': 'you sent valid json data only'})
+        # return self.render_to_http_response(json_data, status=400)
+        empdata = json.loads(data)
+        form = EmployeeForm(empdata)
+        if form.is_valid():
+            form.save(commit=True)
+            json_data = json.dumps({'msg': 'Resource created'})
+            return self.render_to_http_response(json_data, status=400)
+        if form.errors:
+            json_data = json.dumps(form.errors)
+            return self.render_to_http_response(json_data, status=400)
