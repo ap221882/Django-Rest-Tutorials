@@ -53,7 +53,7 @@ class EmployeeCRUDCBV(View):
         json_data = request.body
         stream = io.BytesIO(json_data)
         pdata = JSONParser().parse(stream)
-        id = pdata.get('id', None)
+        id = pdata.get('id')
         emp = Employee.objects.get(id=id)
         serializer = EmployeeSerializer(emp, data=pdata, partial=True)
         if serializer.is_valid():

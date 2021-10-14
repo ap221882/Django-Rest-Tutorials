@@ -33,30 +33,30 @@ END_POINT = 'api/'
 #     print(resp.json())
 
 
-# def update_resource(id):
-#     new_data = {
-#         'id': id,
-#         'esal': 2300,
-#         'eaddr': 'England'
-#     }
-#     resp = requests.put(BASE_URL+END_POINT, data=json.dumps(new_data))
-#     print(resp.status_code)
-#     print(resp.json())
-
-
-# update_resource(4)
-
-def delete_resource(id):
-    data = {
+def update_resource(id):
+    new_data = {
         'id': id,
+        'ename': 'SUNNY123',
+        'esal': 50000
     }
-    resp = requests.delete(BASE_URL+END_POINT, data=json.dumps(data))
+    resp = requests.put(BASE_URL+END_POINT, data=json.dumps(new_data))
     print(resp.status_code)
     print(resp.json())
 
 
-# # # update_resource(8)
-delete_resource(4)
+update_resource(1)
+
+# def delete_resource(id):
+#     data = {
+#         'id': id,
+#     }
+#     resp = requests.delete(BASE_URL+END_POINT, data=json.dumps(data))
+#     print(resp.status_code)
+#     print(resp.json())
+
+
+# update_resource(8)
+# delete_resource(4)
 
 # create_resource()
 
