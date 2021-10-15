@@ -23,5 +23,9 @@ urlpatterns = [
     # path('api/', views.EmployeeCreateAPIView.as_view()),
     # path('api/<int:id>/', views.EmployeeRetrieveAPIView.as_view()),
     # path('api/<int:pk>/', views.EmployeeUpdateAPIView.as_view()),
-    path('api/<int:pk>/', views.EmployeeDestroyAPIView.as_view()),
+    # path('api/<int:pk>/', views.EmployeeDestroyAPIView.as_view()),
+    path('api/', views.EmployeeListCreateAPIView.as_view()),
+    # path('api/<int:id>/', views.EmployeeRetrieveAPIView.as_view()),
+    # path('api/<int:id>/', views.EmployeeDestroyAPIView.as_view()),
+    path('api/<int:pk>/', views.EmployeeRetrieveUpdateDestroyAPIView.as_view()),
 ]

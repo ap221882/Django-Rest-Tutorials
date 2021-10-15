@@ -7,12 +7,27 @@ from .models import Employee
 from rest_framework.response import Response
 # Create your views here.
 
-from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
-# class EmployeeListAPIView(APIView):
-#     def get(self, request, format=None):
-#         qs = Employee.objects.all()
-#         serializer = EmployeeSerializer(qs, many=True)  # model to dict
-#         return Response(serializer.data)  # dict to json
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, ListCreateAPIView, RetrieveUpdateAPIView, RetrieveDestroyAPIView, RetrieveUpdateDestroyAPIView
+
+
+class EmployeeListCreateAPIView(ListCreateAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
+class EmployeeRetrieveUpdateAPIView(RetrieveUpdateAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
+class EmployeeRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
+class EmployeeRetrieveDestroyAPIView(RetrieveDestroyAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
 
 
 class EmployeeListAPIView(ListAPIView):
