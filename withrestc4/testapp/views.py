@@ -7,10 +7,13 @@ from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser, I
 from .models import Employee
 from .serializers import EmployeeSerializer
 
+# Custom permissions
+from .permissions import IsReadOnly, SunnyPermission
+
 
 class EmployeeCRUDCBV(ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     authentication_classes = [TokenAuthentication, ]
-    permission_classes = [DjangoModelPermissions, ]
+    permission_classes = [IsReadOnly, SunnyPermission]
     # permission_classes = [AllowAny, ]
