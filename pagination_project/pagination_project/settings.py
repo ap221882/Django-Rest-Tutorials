@@ -76,6 +76,9 @@ WSGI_APPLICATION = 'pagination_project.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE':10,
+    'DEFAULT_FILTER_BACKENDS':('rest_framework.filters.SearchFilter','rest_framework.filters.OrderingFilter'),
+    'SEARCH_PARAM':'mysearch',
+    'ORDERING_PARAM':'myordering'
 }
 
 
